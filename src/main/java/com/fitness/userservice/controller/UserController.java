@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 public class UserController {
 
-    private UserService userService;
+    private final UserService userService;
 
     @GetMapping("")
     public String sayHello() {
@@ -30,4 +30,8 @@ public class UserController {
         return ResponseEntity.ok(userService.registerUser(userRequest));
     }
 
+    @GetMapping("/validate/{userId}")
+    public ResponseEntity<Boolean> validateUser(@PathVariable String userId) {
+        return ResponseEntity.ok(userService.validateUser(userId));
+    }
 }

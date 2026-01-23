@@ -46,4 +46,8 @@ public class UserService {
         userResponse.setUpdatedAt(user.getUpdatedAt());
         return userResponse;
     }
+
+    public @Nullable Boolean validateUser(String userId) {
+        return userRepository.existsById(userId);
+    }
 }
